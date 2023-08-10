@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/passvalid") // Make sure the URL pattern matches the form's action
+@WebServlet("/passvalid")
 public class Passvalid extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,7 @@ public class Passvalid extends HttpServlet {
         PrintWriter out = response.getWriter();
         String formPassword = request.getParameter("pass");
         
-        out.println(String.format("<h1>%s</h1>", formPassword));
+        // out.println(String.format("<h1>%s</h1>", formPassword));
 
         if (checkBanPass(formPassword)) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Password is not allowed.");
