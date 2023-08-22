@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mangatat</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Add CSS styles for the player cards */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .row {
+            display: flex; /* Use flexbox to create a horizontal layout */
+        }
+
+        .player-card {
+            flex: 1; /* Distribute available space evenly */
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            background-color: #f7f7f7;
+        }
+
+        .player-card h2 {
+            margin-top: 0;
+        }
+
+        .player-card form {
+            margin-top: 10px;
+        }
+
+        .player-card label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .player-card input,
+        .player-card select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .player-card input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .players-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 align="center">Welcome To MANGATHA</h1>
+    <div class="row">
+        <div class="player-card">
+            <h2>Player 1</h2>
+            <form action="" method="post">
+                <label for="player1name">Name</label>
+                <input type="text" name="player1name" value="player1name" placeholder="enter your name">
+                <br>
+                <label for="bet1val">Bet</label>
+                <input type="number" name="bet1val"value="bet1val" placeholder="enter bet amount">
+                <br>
+                <label for="p1position">Choose Position:</label>
+                <select id="p1position" name="p1position">
+                    <option value="in">IN</option>
+                    <option value="out">OUT</option>
+                </select>
+                <br>
+                <label for="p1choosecard">Choose Card:</label>
+                <input type="text" value="p1choosecard" name="p1choosecard" placeholder="enter chosen card">
+        </div>
+
+        <div class="player-card">
+            <h2>Player 2</h2>
+                <label for="player1name">Name</label>
+                <input type="text" name="player2name" value="player2name" placeholder="enter your name">
+                <br>
+                <label for="bet2val">Bet</label>
+                <input type="number" name="bet2val" value="bet2val" placeholder="enter bet amount">
+                <br>
+                <label for="p2position">Choose Position:</label>
+                <select name="p2position">
+                    <option value="in">IN</option>
+                    <option value="out">OUT</option>
+                </select>
+                <br>
+                <label for="p2choosecard">Choose Card:</label>
+                <input type="text" name="p2choosecard" value="p2choosecard" placeholder="enter chosen card">
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <div class="players-container">
+        <div class="player-card">
+            <h2>Player 1</h2>
+            <p><strong>Name:</strong> <span th:text="${player1name}"></span></p>
+            <p><strong>Bet Amount:</strong><span th:text="${bet1val}"></span></p>
+           <p><strong>Card Chosen:</strong><span th:text="${p1choosecard}"></span></p>
+            <p><strong>Position Number:</strong><span th:text="${p1position}"></span></p>
+        </div>
+
+        <div class="player-card">
+            <h2>Player 2</h2>
+            <p><strong>Name:</strong> <span th:text="${player2name}"></span></p>
+            <p><strong>Bet Amount:</strong><span th:text="${bet2val}"></span></p>
+           <p><strong>Card Chosen:</strong><span th:text="${p2choosecard}"></span></p>
+            <p><strong>Position Number:</strong><span th:text="${p2position}"></span></p>
+        </div>
+        
+    <div th:if="${winnerMessage}">
+        <h2 th:text="${winnerMessage}"></h2>
+    </div>
+    
+    </div>
+</body>
+
+</html>
